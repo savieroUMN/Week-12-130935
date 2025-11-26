@@ -1,0 +1,20 @@
+package week12.saviero.id.ac.umn;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class ObjectToFile {
+
+	public static void main(String[] args) {
+		Person person = new Person("John Doe", 22,"Universitas Multimedia Nusantara");
+		
+		try (FileOutputStream fileOut = new FileOutputStream("person.ser");
+				ObjectOutputStream out = new ObjectOutputStream(fileOut)){
+			out.writeObject(person);
+			System.out.println("Serialized data is saved in person.ser");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+	}
+
+}
